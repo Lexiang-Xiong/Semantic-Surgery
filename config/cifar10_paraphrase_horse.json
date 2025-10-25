@@ -1,0 +1,43 @@
+{
+    "diffuser": {
+        "scheduler": "DDIM",
+        "concepts_to_erase": [
+            "horse"
+        ],
+        "neutral_concept": "",
+        "params": {
+            "gamma": 0.02,
+            "beta": -0.12,
+            "alpha_f": null,
+            "erase_index_f": null,
+            "lambda": 1.0,
+            "alpha_threshold": 0.5,
+            "detect_threshold": 0.5
+        },
+        "device": "cuda:0"
+    },
+    "detector": {
+        "type": "ConcurrentObjectDetection",
+        "params": {
+            "threshold": 0.5,
+            "concepts": [
+                "horse"
+            ],
+            "api_key_pool": [
+                "get your api from https://landing.ai/agentic-object-detection"
+            ],
+            "url": "https://api.va.landing.ai/v1/tools/agentic-object-detection",
+            "max_workers": 2
+        }
+    },
+    "generation": {
+        "prompts_path": "./prompts_csv/cifar10_paraphrase.csv",
+        "save_folder": "./output/cifar10_paraphrase_horse",
+        "guidance_scale": 7.5,
+        "image_size": 512,
+        "ddim_steps": 50,
+        "num_samples": 1,
+        "use_cuda_generator": false,
+        "log_interval": 10
+    }
+}
